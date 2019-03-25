@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+   <meta charset="utf-8">
+   <title>Google Maps Example</title>
+   <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+</head>
+<body>
+<div id="mapa" style="width: 400px; height: 400px;">
+   <!-- tu będzie mapka -->
+</div>
+<script type="text/javascript">
+   window.onload = function() {
+      // tworzymy obiekt mapy
+      var div = document.getElementById("mapa");
+      var opcje = {
+         zoom: 16, // dość blisko
+         center: {lat: 51.504949,lng: -0.019501},
+         streetViewControl: false
+      };
+      var naszaMapa = new google.maps.Map(div, opcje);
+      // dodajemy marker
+      var opcjePunktu = {
+         position: {lat: 31.504949,lng: -0.019501},
+         map: naszaMapa,
+         title: "Torchwood Tower",
+         animation: google.maps.Animation.DROP
+      };
+      var marker = new google.maps.Marker(opcjePunktu);
+      // tworzymy dymek czyli InfoWindow
+      var infoWindow = new google.maps.InfoWindow({
+         content: "<h3>InfoWindow</h3> <div>Tu wstawiamy dowolny HTML</div>"
+      });
+      // nasłuchujemy kliknięcia w marker i pokazujemy dymek
+      google.maps.event.addListener(marker, 'click', function() {
+         infoWindow.open(naszaMapa,marker);
+      });
+   };
+</script>
+</body>
+</html>

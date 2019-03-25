@@ -12,6 +12,10 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+      
+    }
+
     public function index()
     {
         //
@@ -24,7 +28,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +39,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Event::create($request->all());
+      session()->flash('message', 'dodano rezerwację');
+      return redirect()->route('main');
+
     }
 
     /**

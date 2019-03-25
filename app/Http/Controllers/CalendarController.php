@@ -26,7 +26,7 @@ class CalendarController extends Controller
                   null,
                   // Add color and link on event
                 [
-                    'color' => '#f05050',
+                    'color' => 'RED',
                     'rendering' => 'background',
                     'url' => 'pass here url and any route',
                 ]

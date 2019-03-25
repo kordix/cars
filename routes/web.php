@@ -19,4 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/calendar', 'CalendarController@index')->name('calendar');
-Route::get('/events', 'CalendarController@index2');
+Route::get('/events', 'CalendarController@index2')->name('main');
+
+Route::resource('event','EventController');
